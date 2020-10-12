@@ -1,0 +1,24 @@
+public class MySolarSystem //extends SolarSystem
+{
+    //protected SolarSystem mySystem = new SolarSystem(600, 600);
+    
+    public static void main (String []args)
+    {
+        SolarSystem mySystem = new SolarSystem(600, 600);
+        double angleSun = 0;
+        double angleEarth = 0;
+        double angleMoon = 0; 
+
+        while(true)
+        {
+            mySystem.drawSolarObject(0, angleSun, 70, "YELLOW");
+            mySystem.drawSolarObjectAbout(100, angleEarth, 30, "BLUE", 0, 0);
+            mySystem.drawSolarObjectAbout(30, angleMoon, 15, "WHITE", 100, angleEarth);
+            mySystem.finishedDrawing();
+
+            angleSun++;
+            angleEarth++;
+            angleMoon += 3;
+        }
+    }
+}
