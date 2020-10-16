@@ -4,11 +4,14 @@
  */
 public class MySolarSystem
 {
-    SolarSystem mySystem = new SolarSystem(600, 600);
-    double angleSun = 0;
+    SolarSystem mySystem = new SolarSystem(800, 800);
+    /*double angleSun = 0;
     double angleEarth = 0;
-    double angleMoon = 0; 
-    
+    double angleMoon = 0; */
+
+    MySun sun = new MySun(0, 0, 150, "YELLOW");
+
+    MyPlanet earth = new MyPlanet(sun.distance + sun.diameter + 50, 0, 50, "BLUE", sun, 1.5);
     /**
      * MySolarSystem constructor builds the solar system based on instance variables of this class.
      * This method also runs a while loop which makes the polar coordinate change in the SolarObjects of this system
@@ -16,17 +19,13 @@ public class MySolarSystem
      */
     public MySolarSystem()
     {
-
         while(true)
         {
-            mySystem.drawSolarObject(0, angleSun, 70, "YELLOW");
-            mySystem.drawSolarObjectAbout(100, angleEarth, 30, "BLUE", 0, 0);
-            mySystem.drawSolarObjectAbout(30, angleMoon, 15, "WHITE", 100, angleEarth);
+            mySystem.drawSolarObject(sun.distance, sun.angle, sun.diameter, sun.col);
+            mySystem.drawSolarObjectAbout(earth.distance, earth.angle, earth.diameter, earth.col, earth.sunDistance, earth.sunAngle);
             mySystem.finishedDrawing();
 
-            angleSun++;
-            angleEarth++;
-            angleMoon += 3;
+            earth.angle += earth.rotationSpeed;
         }
     }
 }
