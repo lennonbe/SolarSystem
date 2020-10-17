@@ -1,3 +1,6 @@
+/**
+ * Extension of MyObject once again. Holds the variables for drawing a planet using addObject method from SolarSystem class.
+ */
 public class MyPlanet extends MyObject
 {
     protected double sunDistance, sunAngle, rotationSpeed;

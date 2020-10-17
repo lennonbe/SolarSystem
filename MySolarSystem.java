@@ -4,14 +4,12 @@
  */
 public class MySolarSystem
 {
-    SolarSystem mySystem = new SolarSystem(800, 800);
-    /*double angleSun = 0;
-    double angleEarth = 0;
-    double angleMoon = 0; */
+    SolarSystem mySystem = new SolarSystem(1000, 1000);
 
-    MySun sun = new MySun(0, 0, 150, "YELLOW");
+    MySun sun = new MySun(0, 0, 100, "YELLOW");
 
-    MyPlanet earth = new MyPlanet(sun.distance + sun.diameter + 50, 0, 50, "BLUE", sun, 1.5);
+    MyPlanet[] planets = new MyPlanet[8];
+
     /**
      * MySolarSystem constructor builds the solar system based on instance variables of this class.
      * This method also runs a while loop which makes the polar coordinate change in the SolarObjects of this system
@@ -19,13 +17,30 @@ public class MySolarSystem
      */
     public MySolarSystem()
     {
+        planets [0] = new MyPlanet(70, 0, 10, "GREY", sun, 3);
+        planets [1] = new MyPlanet(100, 0, 25, "ORANGE", sun, 1.5);
+        planets [2] = new MyPlanet(140, 0, 35, "BLUE", sun, 1);
+        planets [3] = new MyPlanet(180, 0, 30, "#5B1B1B", sun, 1.7);
+        planets [4] = new MyPlanet(240, 0, 60, "#DECA7A", sun, 0.8);
+        planets [5] = new MyPlanet(280, 0, 10, "#A19C89", sun, 1.1);
+        /*planets[6] = new MyPlanet(sun.distance + sun.diameter + 20, 0, 10, "BROWN", sun, 1.5);
+        planets[7] = new MyPlanet(sun.distance + sun.diameter + 20, 0, 10, "BROWN", sun, 1.5);*/
+
+
         while(true)
         {
             mySystem.drawSolarObject(sun.distance, sun.angle, sun.diameter, sun.col);
-            mySystem.drawSolarObjectAbout(earth.distance, earth.angle, earth.diameter, earth.col, earth.sunDistance, earth.sunAngle);
+            //mySystem.drawSolarObjectAbout(earth.distance, earth.angle, earth.diameter, earth.col, earth.sunDistance, earth.sunAngle);
+
+            for(int i = 0; i < 6; i++)
+            {
+                mySystem.drawSolarObjectAbout(planets[i].distance, planets[i].angle, planets[i].diameter, planets[i].col, planets[i].sunDistance, planets[i].sunAngle);
+                planets[i].angle += planets[i].rotationSpeed;
+            }
+            
             mySystem.finishedDrawing();
 
-            earth.angle += earth.rotationSpeed;
+            //earth.angle += earth.rotationSpeed;
         }
     }
 }

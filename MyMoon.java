@@ -1,3 +1,7 @@
+/**
+ * An extend class of my object. This class creates the instance of a moon which then can be passed in as parameters to the drawObject class
+ * in SolarSystem.
+ */
 public class MyMoon extends MyObject
 {
     protected double planetDistance, planetAngle, rotationSpeed;

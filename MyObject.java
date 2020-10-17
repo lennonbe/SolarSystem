@@ -1,4 +1,6 @@
-/**This java class creates an object for my solar system, this is the mother class of all other solar objects. */
+/**
+ * This java class creates an object for my solar system, this is the mother class of all other solar objects. */
+
 public class MyObject
 {
     protected double distance;
