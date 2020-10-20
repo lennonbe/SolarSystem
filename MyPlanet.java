@@ -12,4 +12,9 @@ public class MyPlanet extends MyObject
         sunAngle = sun.angle;
         rotationSpeed = speed;
     }
+
+    public void setDistance(double input)
+    {
+        distance = input;
+    }
 }
