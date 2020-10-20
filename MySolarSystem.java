@@ -47,12 +47,12 @@ public class MySolarSystem
 
         while(true)
         {
-            mySystem.drawSolarObject(sun.distance, sun.angle, sun.diameter, sun.col);
+            mySystem.drawSolarObject(sun);
 
             for(int i = 0; i < 8; i++)
             {
-                mySystem.drawSolarObjectAbout(planets[i].distance, planets[i].angle, planets[i].diameter, planets[i].col, planets[i].sunDistance, planets[i].sunAngle);
-                //planets[i].angle += planets[i].rotationSpeed;
+                mySystem.drawSolarObjectAbout(sun, planets[i]);
+                planets[i].angle += planets[i].rotationSpeed;
             }
             
             mySystem.finishedDrawing();
