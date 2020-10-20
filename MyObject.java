@@ -15,4 +15,9 @@ public class MyObject
         this.diameter = diameter;
         this.col = col;
     }
+
+    public void setDistance(double input)
+    {
+        distance = input;
+    }
 }

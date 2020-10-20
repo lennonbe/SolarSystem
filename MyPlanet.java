@@ -5,7 +5,7 @@ public class MyPlanet extends MyObject
 {
     protected double sunDistance, sunAngle, rotationSpeed;
 
-    public MyPlanet(double distance, double angle, double diameter, String col, MySun sun, double speed/*double sunDistance, double sunAngle*/)
+    public MyPlanet(double distance, double angle, double diameter, String col, MySun sun, double speed)
     {
         super(distance, angle, diameter, col);
         sunDistance = sun.distance;
@@ -13,8 +13,4 @@ public class MyPlanet extends MyObject
         rotationSpeed = speed;
     }
 
-    public void setDistance(double input)
-    {
-        distance = input;
-    }
 }

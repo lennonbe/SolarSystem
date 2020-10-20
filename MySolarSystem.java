@@ -10,11 +10,15 @@ public class MySolarSystem
 
     MyPlanet[] planets = new MyPlanet[8];
     
+    /*
+    For the sake of simplicity i decided not to add all the moons, since jupiter has 70+ for example.
+    Due to this i decided to draw the three biggest moons of each planet.
+    */
     MyMoon[] marsMoons = new MyMoon[2];
-    MyMoon[] jupiterMoons = new MyMoon[2];
-    MyMoon[] saturnMoons = new MyMoon[2];
-    MyMoon[] uranusMoons = new MyMoon[2];
-    MyMoon[] neptuneMoons = new MyMoon[2];
+    MyMoon[] jupiterMoons = new MyMoon[3];
+    MyMoon[] saturnMoons = new MyMoon[3];
+    MyMoon[] uranusMoons = new MyMoon[3];
+    MyMoon[] neptuneMoons = new MyMoon[3];
 
     /**
      * MySolarSystem constructor builds the solar system based on instance variables of this class.
@@ -23,7 +27,7 @@ public class MySolarSystem
      */
     public MySolarSystem()
     {
-        planets[0] = new MyPlanet(70, 0, 6.6, "GREY", sun, 3);
+        planets[0] = new MyPlanet(70, 0, 6.6, "GREY", sun, 2);
         planets[1] = new MyPlanet(0, 0, 13.3, "ORANGE", sun, 1.5);
         planets[2] = new MyPlanet(0, 0, 20, "BLUE", sun, 1);
         planets[3] = new MyPlanet(0, 0, 16.6, "#5B1B1B", sun, 1.7);
@@ -31,6 +35,8 @@ public class MySolarSystem
         planets[5] = new MyPlanet(0, 0, 23.3, "#A19C89", sun, 1.1);
         planets[6] = new MyPlanet(0, 0, 20.1, "#40C7C3", sun, 1.2);
         planets[7] = new MyPlanet(0, 0, 16.8, "#435CAE", sun, 1);
+
+        MyMoon moon = new MyMoon(planets[2].diameter/2 + 5, 0, 4, "WHITE", planets[2], 1.4);
 
         /*
         Since you cannot access a variable that hasnt been defined I created a setDistance() method
@@ -41,7 +47,7 @@ public class MySolarSystem
         */
         for(int i = 1; i < 8; i++)
         {
-            planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + 10);
+            planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + 15);
         }
 
 
@@ -54,6 +60,9 @@ public class MySolarSystem
                 mySystem.drawSolarObjectAbout(sun, planets[i]);
                 planets[i].angle += planets[i].rotationSpeed;
             }
+
+            mySystem.drawSolarObjectAbout(planets[2], moon);
+            moon.angle += moon.rotationSpeed;
             
             mySystem.finishedDrawing();
 
