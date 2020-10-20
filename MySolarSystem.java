@@ -14,6 +14,7 @@ public class MySolarSystem
     For the sake of simplicity i decided not to add all the moons, since jupiter has 70+ for example.
     Due to this i decided to draw the three biggest moons of each planet.
     */
+    MyMoon moon;
     MyMoon[] marsMoons = new MyMoon[2];
     MyMoon[] jupiterMoons = new MyMoon[3];
     MyMoon[] saturnMoons = new MyMoon[3];
@@ -36,7 +37,7 @@ public class MySolarSystem
         planets[6] = new MyPlanet(0, 0, 20.1, "#40C7C3", sun, 1.2);
         planets[7] = new MyPlanet(0, 0, 16.8, "#435CAE", sun, 1);
 
-        MyMoon moon = new MyMoon(planets[2].diameter/2 + 5, 0, 4, "WHITE", planets[2], 1.4);
+        moon = new MyMoon(planets[2].diameter/2 + 5, 0, 4, "WHITE", planets[2], 1.4);
 
         /*
         Since you cannot access a variable that hasnt been defined I created a setDistance() method
@@ -49,8 +50,14 @@ public class MySolarSystem
         {
             planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + 15);
         }
+    }
 
-
+    /**
+     * This void method runs the solar system by incrementing the angle in the polar coordinates of 
+     * the solarObjects.
+     */
+    public void drawSolarSystem()
+    {
         while(true)
         {
             mySystem.drawSolarObject(sun);
