@@ -20,4 +20,9 @@ public class MyObject
     {
         distance = input;
     }
+
+    public void setColour(String input)
+    {
+        col = input;
+    }
 }
