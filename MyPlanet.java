@@ -6,6 +6,9 @@ public class MyPlanet extends MyObject
     protected double sunDistance, sunAngle, rotationSpeed;
     protected int moons;
     protected MyMoon[] moonsArr;
+    protected double tempDist = 7;
+    protected double tempRot = 1.4;
+    protected double moonSize = 5;
 
     /**
      * This constructor holds the variables of a MyPlanet object, which then gets passed in to the drawSolarObject.
@@ -31,6 +34,16 @@ public class MyPlanet extends MyObject
 
         moonsArr = new MyMoon[moons];
         
+    }
+
+    public void BuildMoons()
+    {
+        for(int j = 0; j < this.moonsArr.length; j++)
+        {
+            this.moonsArr[j] = new MyMoon(this.diameter/2 + tempDist, 0, moonSize, "WHITE", this, tempRot);
+            tempDist += 6;
+            tempRot = -tempRot;
+        }
     }
 
 }

@@ -4,11 +4,14 @@
  */
 public class MySolarSystem
 {
-    SolarSystem mySystem = new SolarSystem(1000, 1000);
+    SolarSystem mySystem = new SolarSystem(1200, 1200);
 
     MySun sun = new MySun(0, 0, 66.6, "YELLOW");
 
     MyPlanet[] planets = new MyPlanet[8];
+
+    double moonSize = 5;
+    double distanceBetweenPlanets = 28;
     
     /*
     For the sake of simplicity i decided not to add all the moons, since jupiter has 70+ for example.
@@ -31,17 +34,21 @@ public class MySolarSystem
         planets[6] = new MyPlanet(0, 0, 20.1, "#40C7C3", sun, 1.2, 0);
         planets[7] = new MyPlanet(0, 0, 16.8, "#435CAE", sun, 1, 0);
 
+        //double distanceBetweenPlanets = 28;
+
         for(int i = 0; i < planets.length; i++)
         {
-            double tempDist = 5;
+            /*double tempDist = 7;
             double tempRot = 1.4;
 
             for(int j = 0; j < planets[i].moonsArr.length; j++)
             {
-                planets[i].moonsArr[j] = new MyMoon(planets[i].diameter/2 + tempDist, 0, 4, "WHITE", planets[i], tempRot);
-                tempDist += 8;
+                planets[i].moonsArr[j] = new MyMoon(planets[i].diameter/2 + tempDist, 0, moonSize, "WHITE", planets[i], tempRot);
+                tempDist += 6;
                 tempRot = -tempRot;
-            }
+            }*/
+
+            planets[i].BuildMoons();
 
         }
 
@@ -52,31 +59,9 @@ public class MySolarSystem
         By using the for loop and the Planets array I populate the distance variable on every element of
         the array, making it safe and ensuring collisions do not occur.
         */
-
-        boolean multipleMoonsFlag = false;
         for(int i = 1; i < planets.length; i++)
         {
-            double tempDistPlanets = 15;
-            double extraMoon = 7;
-
-            if(multipleMoonsFlag)
-            {
-                planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + tempDistPlanets + extraMoon*planets[i - 1].moonsArr.length);
-                multipleMoonsFlag = false;
-            }
-            else
-            {
-                if(planets[i].moonsArr.length > 1)
-                {
-                    multipleMoonsFlag = true;
-                    planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + tempDistPlanets + extraMoon*planets[i].moonsArr.length);
-                }
-                else
-                {
-                    planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + tempDistPlanets);
-                }
-            }
-            
+            planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets);
         }
     }
 
@@ -99,11 +84,11 @@ public class MySolarSystem
                     if(planets[i].moonsArr.length > 0)
                     {
                         mySystem.drawSolarObjectAbout(planets[i], planets[i].moonsArr[j]);
-                        //planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
+                        planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
                     }
                 }
                 
-                //planets[i].angle += planets[i].rotationSpeed;
+                planets[i].angle += planets[i].rotationSpeed;
             }
             
             mySystem.finishedDrawing();
