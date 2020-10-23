@@ -1,12 +1,21 @@
 /**
- * An extend class of my object. This class creates the instance of a moon which then can be passed in as parameters to the drawObject class
- * in SolarSystem.
+ * Subclass of MyObject which represents an asteroid. It then can be passed in as parameters to the drawObjectAbout class
+ * in SolarSystem, creating a rotating asteroid.
  */
 public class MyAsteroid extends MyObject
 {
     protected double rotationSpeed;
     protected MyObject orbitObject;
 
+    /**
+     * 
+     * @param distance the distance from the object the asteroid orbits
+     * @param angle angle in the polar coordinates system
+     * @param diameter the diameter of the asteroid you wish to draw
+     * @param col the colour of the asteroid
+     * @param obj the object the asteroid orbits around
+     * @param speed the speed at which the asteroid orbits
+     */
     public MyAsteroid(double distance, double angle, double diameter, String col, MyObject obj, double speed)
     {
         super(distance, angle, diameter, col);

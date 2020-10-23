@@ -1,6 +1,6 @@
 /**
  * MySolarSystem class creates an instance of the SolarSystem class based on the model we want to build
- * the constructor method for this runs a while loop which keeps the planetes rotating.
+ * drawing this model by using the draw methods in the SolarSystem class.
  */
 public class MySolarSystem
 {
@@ -13,7 +13,7 @@ public class MySolarSystem
 
     double moonSize = 5;
     double distanceBetweenPlanets = 28;
-    double asteroidExtra = 20;
+    double asteroidExtra = 30;
     double mercuryDistance = 70;
     double asteroidSpeed = Math.random() * 80;
     
@@ -24,6 +24,15 @@ public class MySolarSystem
 
     /**
      * MySolarSystem constructor builds the solar system based on instance variables of this class.
+     * This consists of the planets, which all have to be instantiated individually due to the differences 
+     * between them, the asteroidBelt array, which is instantiated using a for loop, and the moons which are instantiated 
+     * using the drawMoons method from the planet class.
+     * 
+     * Several for loops are used in this implementation and each have a different purpose.
+     * The loop which calls the setDistance method applies a similar distance between all planets except
+     * for the distance between jupiter and mars, which is greater due to the space needed for the asteroid belt.
+     * For each of the asteroids a rotating distance between 0 and 80 is randomly generated and used. 
+     * 
      */
     public MySolarSystem()
     {
@@ -54,8 +63,6 @@ public class MySolarSystem
 
         for(int i = 1; i < planets.length; i++)
         {
-            //planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets);
-
             if(i == 4)
             {
                 planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets + asteroidExtra);
@@ -68,14 +75,14 @@ public class MySolarSystem
 
         for(int i = 0; i < asteroidBelt.length; i++)
         {
-            asteroidBelt[i] = new MyAsteroid(planets[3].distance + ((planets[3].diameter) / 2 ) + distanceBetweenPlanets/2, 0, 2, "GREY", sun, asteroidSpeed);
+            asteroidBelt[i] = new MyAsteroid(planets[3].distance + ((planets[3].diameter) / 2 ) + distanceBetweenPlanets * 2/3, 0, 2, "GREY", sun, asteroidSpeed);
             asteroidSpeed = Math.random() * 80;
         }
     }
 
     /**
-     * This void method runs the solar system by incrementing the angle in the polar coordinates of 
-     * the solarObjects and redrawing them in a constantly true while loop.
+     * This method runs the solar system by incrementing the angle in the polar coordinates of 
+     * the solarObjects and redrawing them in an always true while loop.
      */
     public void drawSolarSystem()
     {

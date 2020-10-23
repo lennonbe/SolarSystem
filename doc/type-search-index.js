@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Driver"},{"p":"<Unnamed>","l":"MySolarSystem"},{"p":"<Unnamed>","l":"SolarSystem"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"Driver"},{"p":"<Unnamed>","l":"MyAsteroid"},{"p":"<Unnamed>","l":"MyMoon"},{"p":"<Unnamed>","l":"MyObject"},{"p":"<Unnamed>","l":"MyPlanet"},{"p":"<Unnamed>","l":"MySolarSystem"},{"p":"<Unnamed>","l":"MySun"},{"p":"<Unnamed>","l":"SolarSystem"}]

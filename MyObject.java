@@ -1,6 +1,7 @@
 /**
- * This java class creates an object for my solar system, this is the mother class of all other solar objects. */
-
+ * Superclass of all other classes which represent any kind of solar object. Holds the basic necessary variables for building
+ * a solar object.
+ */
 public class MyObject
 {
     protected double distance;
@@ -8,6 +9,13 @@ public class MyObject
     protected double diameter; 
     protected String col;
     
+    /**
+     * 
+     * @param distance the distance from the centre of the frame
+     * @param angle angle in the polar coordinates system
+     * @param diameter the diameter of the sun object you wish to draw
+     * @param col the colour of the object
+     */
     public MyObject(double distance, double angle, double diameter, String col)
     {
         this.distance = distance;
@@ -16,11 +24,19 @@ public class MyObject
         this.col = col;
     }
 
+    /**
+     * Method which sets the distance of the object from the centre of the frame.
+     * @param input the distance you want to place the object at from the centre of the frame
+     */
     public void setDistance(double input)
     {
         distance = input;
     }
 
+    /**
+     * Sets the colour of the object
+     * @param input the colour you wish to set the object to
+     */
     public void setColour(String input)
     {
         col = input;
