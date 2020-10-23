@@ -1,6 +1,6 @@
 /**
  * MySolarSystem class creates an instance of the SolarSystem class based on the model we want to build
- * the constructor method for this runs a whilee loop which keeps the planetes rotating.
+ * the constructor method for this runs a while loop which keeps the planetes rotating.
  */
 public class MySolarSystem
 {
@@ -9,9 +9,13 @@ public class MySolarSystem
     MySun sun = new MySun(0, 0, 66.6, "YELLOW");
 
     MyPlanet[] planets = new MyPlanet[8];
+    MyAsteroid[] asteroidBelt = new MyAsteroid[100];
 
     double moonSize = 5;
     double distanceBetweenPlanets = 28;
+    double asteroidExtra = 20;
+    double mercuryDistance = 70;
+    double asteroidSpeed = Math.random() * 80;
     
     /*
     For the sake of simplicity i decided not to add all the moons, since jupiter has 70+ for example.
@@ -20,12 +24,10 @@ public class MySolarSystem
 
     /**
      * MySolarSystem constructor builds the solar system based on instance variables of this class.
-     * This method also runs a while loop which makes the polar coordinate change in the SolarObjects of this system
-     * making for a rotating movement of the earth around the sun and the moon around the earth.
      */
     public MySolarSystem()
     {
-        planets[0] = new MyPlanet(70, 0, 6.6, "GREY", sun, 2, 0);
+        planets[0] = new MyPlanet(mercuryDistance, 0, 6.6, "GREY", sun, 2, 0);
         planets[1] = new MyPlanet(0, 0, 13.3, "ORANGE", sun, 1.5, 0);
         planets[2] = new MyPlanet(0, 0, 20, "BLUE", sun, 1, 1);
         planets[3] = new MyPlanet(0, 0, 16.6, "#5B1B1B", sun, 1.7, 2);
@@ -34,22 +36,9 @@ public class MySolarSystem
         planets[6] = new MyPlanet(0, 0, 20.1, "#40C7C3", sun, 1.2, 0);
         planets[7] = new MyPlanet(0, 0, 16.8, "#435CAE", sun, 1, 0);
 
-        //double distanceBetweenPlanets = 28;
-
         for(int i = 0; i < planets.length; i++)
         {
-            /*double tempDist = 7;
-            double tempRot = 1.4;
-
-            for(int j = 0; j < planets[i].moonsArr.length; j++)
-            {
-                planets[i].moonsArr[j] = new MyMoon(planets[i].diameter/2 + tempDist, 0, moonSize, "WHITE", planets[i], tempRot);
-                tempDist += 6;
-                tempRot = -tempRot;
-            }*/
-
             planets[i].BuildMoons();
-
         }
 
         /*
@@ -58,16 +47,35 @@ public class MySolarSystem
         individually and allows for an easier and more trustworthy way of setting the distance.
         By using the for loop and the Planets array I populate the distance variable on every element of
         the array, making it safe and ensuring collisions do not occur.
+
+        The loop starts from the position i=1 because mercury has a stationary position regarding the position of the sun.
+        Mercury's position is defined by mercuryDistance value.
         */
+
         for(int i = 1; i < planets.length; i++)
         {
-            planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets);
+            //planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets);
+
+            if(i == 4)
+            {
+                planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets + asteroidExtra);
+            }
+            else
+            {
+                planets[i].setDistance(planets[i - 1].distance + ((planets[i - 1].diameter) / 2 ) + planets[i].diameter/2 + distanceBetweenPlanets);
+            }
+        }
+
+        for(int i = 0; i < asteroidBelt.length; i++)
+        {
+            asteroidBelt[i] = new MyAsteroid(planets[3].distance + ((planets[3].diameter) / 2 ) + distanceBetweenPlanets/2, 0, 2, "GREY", sun, asteroidSpeed);
+            asteroidSpeed = Math.random() * 80;
         }
     }
 
     /**
      * This void method runs the solar system by incrementing the angle in the polar coordinates of 
-     * the solarObjects.
+     * the solarObjects and redrawing them in a constantly true while loop.
      */
     public void drawSolarSystem()
     {
@@ -78,17 +86,19 @@ public class MySolarSystem
             for(int i = 0; i < planets.length; i++)
             {
                 mySystem.drawSolarObjectAbout(sun, planets[i]);
+                planets[i].angle += planets[i].rotationSpeed;
 
                 for(int j = 0; j < planets[i].moonsArr.length; j++)
                 {
-                    if(planets[i].moonsArr.length > 0)
-                    {
-                        mySystem.drawSolarObjectAbout(planets[i], planets[i].moonsArr[j]);
-                        planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
-                    }
+                    mySystem.drawSolarObjectAbout(planets[i], planets[i].moonsArr[j]);
+                    planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
                 }
-                
-                planets[i].angle += planets[i].rotationSpeed;
+            }
+
+            for(int i = 0; i < asteroidBelt.length; i++)
+            {
+                mySystem.drawSolarObjectAbout(sun, asteroidBelt[i]);
+                asteroidBelt[i].angle += asteroidBelt[i].rotationSpeed;
             }
             
             mySystem.finishedDrawing();

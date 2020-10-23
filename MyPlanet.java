@@ -6,8 +6,9 @@ public class MyPlanet extends MyObject
     protected double sunDistance, sunAngle, rotationSpeed;
     protected int moons;
     protected MyMoon[] moonsArr;
+    
     protected double tempDist = 7;
-    protected double tempRot = 1.4;
+    protected double tempRot = Math.random() * 5;
     protected double moonSize = 5;
 
     /**
@@ -42,7 +43,7 @@ public class MyPlanet extends MyObject
         {
             this.moonsArr[j] = new MyMoon(this.diameter/2 + tempDist, 0, moonSize, "WHITE", this, tempRot);
             tempDist += 6;
-            tempRot = -tempRot;
+            tempRot = Math.random() * 5;
         }
     }
 
