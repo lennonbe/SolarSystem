@@ -73,6 +73,10 @@ public class MySolarSystem
             }
         }
 
+        /*
+        When building the asteroid belt i increase the distance between mars and jupiter by 2/3, ensuring no collision occurs between the moons and the 
+        asteroids.
+        */
         for(int i = 0; i < asteroidBelt.length; i++)
         {
             asteroidBelt[i] = new MyAsteroid(planets[3].distance + ((planets[3].diameter) / 2 ) + distanceBetweenPlanets * 2/3, 0, 2, "GREY", sun, asteroidSpeed);
@@ -88,23 +92,23 @@ public class MySolarSystem
     {
         while(true)
         {
-            mySystem.drawSolarObject(sun);
+            mySystem.drawSolarObject(sun.distance, sun.angle, sun.diameter, sun.col);
 
             for(int i = 0; i < planets.length; i++)
             {
-                mySystem.drawSolarObjectAbout(sun, planets[i]);
+                mySystem.drawSolarObjectAbout(planets[i].distance, planets[i].angle, planets[i].diameter, planets[i].col, planets[i].sunDistance, planets[i].sunAngle);
                 planets[i].angle += planets[i].rotationSpeed;
 
                 for(int j = 0; j < planets[i].moonsArr.length; j++)
                 {
-                    mySystem.drawSolarObjectAbout(planets[i], planets[i].moonsArr[j]);
+                    mySystem.drawSolarObjectAbout(planets[i].moonsArr[j].distance, planets[i].moonsArr[j].angle, planets[i].moonsArr[j].diameter, planets[i].moonsArr[j].col, planets[i].distance, planets[i].angle);
                     planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
                 }
             }
 
             for(int i = 0; i < asteroidBelt.length; i++)
             {
-                mySystem.drawSolarObjectAbout(sun, asteroidBelt[i]);
+                mySystem.drawSolarObjectAbout(asteroidBelt[i].distance, asteroidBelt[i].angle, asteroidBelt[i].diameter, asteroidBelt[i].col, sun.distance, sun.angle);
                 asteroidBelt[i].angle += asteroidBelt[i].rotationSpeed;
             }
             

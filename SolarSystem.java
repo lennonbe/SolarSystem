@@ -120,16 +120,8 @@ public class SolarSystem extends JFrame
 	 * @param col the colour of this object, as a string. Case insentive. <p>One of: BLACK, BLUE, CYAN, DARK_GRAY, GRAY, GREEN, LIGHT_GRAY, 
 	 * MAGENTA, ORANGE, PINK, RED, WHITE, YELLOW. Alternatively, a 24 bit hexadecimal string representation of an RGB colour is also accepted, e.g. "#FF0000"</p>
 	 */
-	public void drawSolarObject(MyObject obj)
+	public void drawSolarObject(double distance, double angle, double diameter, String col)
 	{
-		double distance, angle, diameter;
-		String col;
-
-		distance = obj.distance;
-		angle = obj.angle;
-		diameter = obj.diameter;
-		col = obj.col;
-
 		Color colour = this.getColourFromString(col);
 		double centreOfRotationX = ((double) width) / 2.0; 
 		double centreOfRotationY = ((double) height) / 2.0; 
@@ -179,17 +171,17 @@ public class SolarSystem extends JFrame
 	 * @param centreOfRotationDistance the distance part of the polar co-ordinate about which this object orbits.
 	 * @param centreOfRotationAngle the angular part of the polar co-ordinate about which this object orbits.
 	 */
-	public void drawSolarObjectAbout(MyObject centreObject, MyObject rotatingObject)
+	public void drawSolarObjectAbout(double distance, double angle, double diameter, String col, double centreOfRotationDistance, double centreOfRotationAngle)
 	{
-		double distance, angle, diameter, centreOfRotationDistance, centreOfRotationAngle;
-		String col;
+		/*double distance, angle, diameter, centreOfRotationDistance, centreOfRotationAngle;
+		String col;*/
 
-		distance = rotatingObject.distance;
+		/*distance = rotatingObject.distance;
 		angle = rotatingObject.angle;
 		diameter = rotatingObject.diameter;
 		centreOfRotationDistance = centreObject.distance;
 		centreOfRotationAngle = centreObject.angle;
-		col = rotatingObject.col;
+		col = rotatingObject.col;*/
 
 		Color colour = this.getColourFromString(col);
 		double centrerads = Math.toRadians(centreOfRotationAngle);
