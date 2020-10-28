@@ -3,7 +3,7 @@
  * A few different varibales are used such as rotation speed which is the moons orbiting
  * speed and orbitPlanet, which is the planet it orbits around.
  */
-public class MyMoon extends MyObject
+public class MyMoon extends SolarObject
 {
     protected double rotationSpeed;
     protected MyPlanet orbitPlanet;

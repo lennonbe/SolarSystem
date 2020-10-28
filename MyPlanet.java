@@ -5,7 +5,7 @@
  * the planet has, the distMoons which is the distance between moons which is set to 7, rotSpeed which is the moons rotation 
  * speed which gets randomly generated with every moon and the moonSize variable which is the size of the moons, set to a constant 5. 
  */
-public class MyPlanet extends MyObject
+public class MyPlanet extends SolarObject
 {
     protected double sunDistance, sunAngle, rotationSpeed;
     protected int moons;

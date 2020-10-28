@@ -2,7 +2,7 @@
  * Superclass of all other classes which represent any kind of solar object. Holds the basic necessary variables for building
  * a solar object.
  */
-public class MyObject
+public class SolarObject
 {
     protected double distance;
     protected double angle;
@@ -16,7 +16,7 @@ public class MyObject
      * @param diameter the diameter of the sun object you wish to draw
      * @param col the colour of the object
      */
-    public MyObject(double distance, double angle, double diameter, String col)
+    public SolarObject(double distance, double angle, double diameter, String col)
     {
         this.distance = distance;
         this.angle = angle;

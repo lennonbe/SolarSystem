@@ -2,10 +2,10 @@
  * Subclass of MyObject which represents an asteroid. It then can be passed in as parameters to the drawObjectAbout class
  * in SolarSystem, creating a rotating asteroid.
  */
-public class MyAsteroid extends MyObject
+public class MyAsteroid extends SolarObject
 {
     protected double rotationSpeed;
-    protected MyObject orbitObject;
+    protected SolarObject orbitObject;
 
     /**
      * 
@@ -16,7 +16,7 @@ public class MyAsteroid extends MyObject
      * @param obj the object the asteroid orbits around
      * @param speed the speed at which the asteroid orbits
      */
-    public MyAsteroid(double distance, double angle, double diameter, String col, MyObject obj, double speed)
+    public MyAsteroid(double distance, double angle, double diameter, String col, SolarObject obj, double speed)
     {
         super(distance, angle, diameter, col);
         rotationSpeed = speed;

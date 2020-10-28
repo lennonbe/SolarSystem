@@ -2,7 +2,7 @@
  * Subclass of myObject which represents the sun. close to no differences from the MyObject class,
  * making it the most basic object in this solar system.
  */
-public class MySun extends MyObject
+public class MySun extends SolarObject
 {
     /**
      * MySun constructor, which takes in all the values used in MyObject but automatically puts sun in the center of the frame.

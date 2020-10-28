@@ -45,9 +45,9 @@ public class MySolarSystem
         planets[6] = new MyPlanet(0, 0, 20.1, "#40C7C3", sun, 1.2, 0);
         planets[7] = new MyPlanet(0, 0, 16.8, "#435CAE", sun, 1, 0);
 
-        for(int i = 0; i < planets.length; i++)
+        for(MyPlanet i : planets)
         {
-            planets[i].BuildMoons();
+            i.BuildMoons();
         }
 
         /*
@@ -94,22 +94,25 @@ public class MySolarSystem
         {
             mySystem.drawSolarObject(sun.distance, sun.angle, sun.diameter, sun.col);
 
-            for(int i = 0; i < planets.length; i++)
+            for(MyPlanet i : planets)
             {
-                mySystem.drawSolarObjectAbout(planets[i].distance, planets[i].angle, planets[i].diameter, planets[i].col, planets[i].sunDistance, planets[i].sunAngle);
-                planets[i].angle += planets[i].rotationSpeed;
+                mySystem.drawSolarObjectAbout(i.distance, i.angle, i.diameter, i.col, i.sunDistance, i.sunAngle);
+                i.angle += i.rotationSpeed;
 
-                for(int j = 0; j < planets[i].moonsArr.length; j++)
+                for(MyMoon j : i.moonsArr)
                 {
-                    mySystem.drawSolarObjectAbout(planets[i].moonsArr[j].distance, planets[i].moonsArr[j].angle, planets[i].moonsArr[j].diameter, planets[i].moonsArr[j].col, planets[i].distance, planets[i].angle);
-                    planets[i].moonsArr[j].angle += planets[i].moonsArr[j].rotationSpeed;
+                    mySystem.drawSolarObjectAbout(j.distance, j.angle, j.diameter, j.col, j.orbitPlanet.distance, j.orbitPlanet.angle);
+                    j.angle += j.rotationSpeed;
                 }
             }
 
-            for(int i = 0; i < asteroidBelt.length; i++)
+            for(MyAsteroid i : asteroidBelt)
             {
-                mySystem.drawSolarObjectAbout(asteroidBelt[i].distance, asteroidBelt[i].angle, asteroidBelt[i].diameter, asteroidBelt[i].col, sun.distance, sun.angle);
-                asteroidBelt[i].angle += asteroidBelt[i].rotationSpeed;
+                mySystem.drawSolarObjectAbout(i.distance, i.angle, i.diameter, i.col, i.orbitObject.distance, i.orbitObject.angle);
+                i.angle += i.rotationSpeed;
+
+                /*mySystem.drawSolarObjectAbout(asteroidBelt[i].distance, asteroidBelt[i].angle, asteroidBelt[i].diameter, asteroidBelt[i].col, asteroidBelt[i].orbitObject.distance, asteroidBelt[i].orbitObject.angle);
+                asteroidBelt[i].angle += asteroidBelt[i].rotationSpeed;*/
             }
             
             mySystem.finishedDrawing();
